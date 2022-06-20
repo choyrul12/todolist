@@ -1,23 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
 function App() {
+  const [activity, setActivity] = React.useState('');
+  const [todos, setToDos] = React.useState([])
+  // const [news, setNews] =  React.useState([])
+  // React.useEffect(function(){
+  //   async function getData(){
+  //     const req = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
+  //     const res = await req.json();
+
+  //     setNews(res)
+  //   }
+  //   getData();
+  // },[])
+  // const activityRef = React.useRef(null)
+  
+  function submitForm(e){
+    e.preventDefault();
+    setToDos([...todos, activity])
+    setActivity('')
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>ToDoList</h1>
       </header>
+      <div className='body'>
+        <form onSubmit={submitForm}>
+          <input type='text' value={activity} className='input-txt' onChange={function(e){setActivity(e.target.value)}}/>
+          <button className='btn'>ADD</button>
+        </form>  
+        <ul>
+          {todos.map(function(todo){
+            return<li>{todo}</li>
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
