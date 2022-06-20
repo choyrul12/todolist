@@ -19,8 +19,12 @@ function App() {
   
   function submitForm(e){
     e.preventDefault();
-    setToDos([...todos, activity])
+    setToDos([...todos, {id:generateId(), activity:activity}])
     setActivity('')
+  }
+
+  function generateId(){
+    return Date.now();
   }
   return (
     <div className="App">
@@ -34,7 +38,7 @@ function App() {
         </form>  
         <ul>
           {todos.map(function(todo){
-            return<li>{todo}</li>
+            return<li key={todo.id}>{todo.activity}</li>
           })}
         </ul>
       </div>
