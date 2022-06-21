@@ -1,5 +1,4 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home/u4246059/public_html  # Add /<app_folder> if required
-        
+        - export DEPLOYPATH=/home/u4246059/public_html 
