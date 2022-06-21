@@ -2,9 +2,5 @@
 deployment:
       tasks:
         - export DEPLOYPATH=/home/u4246059/public_html 
-        - /public/cp index.html $DEPLOYPATH
-        - /public/cp style.css $DEPLOYPATH
-        - /public/cp favicon.ico $DEPLOYPATH
-        - /public/cp robots.txt $DEPLOYPATH
-        - /public/cp manifest.json $DEPLOYPATH
-
+        - /bin/cp -R public $DEPLOYPATH
+        - /bin/cp -R src $DEPLOYPATH
